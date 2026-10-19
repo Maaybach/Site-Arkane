@@ -43,3 +43,59 @@ const observer = new IntersectionObserver((entries) => {
 }, { rootMargin: "-20% 0px -65% 0px" });
 
 sections.forEach(section => observer.observe(section));
+
+/* ===== PROGRESSION DE LECTURE — NEXT LIFE ===== */
+
+const progressFill = document.getElementById("readingProgressFill");
+const progressText = document.getElementById("readingProgressText");
+const progressStorageKey = "nextLifeReadingPosition";
+
+const updateReadingProgress = () => {
+  const maxScroll =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = maxScroll > 0
+    ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100))
+    : 0;
+
+  if (progressFill) {
+    progressFill.style.width = `${progress}%`;
+  }
+
+  if (progressText) {
+    progressText.textContent = `${Math.round(progress)} %`;
+  }
+};
+
+window.addEventListener("scroll", () => {
+  updateReadingProgress();
+
+  try {
+    localStorage.setItem(progressStorageKey, String(window.scrollY));
+  } catch (error) {
+    // La progression fonctionne même si le stockage est indisponible.
+  }
+}, { passive: true });
+
+window.addEventListener("resize", updateReadingProgress);
+
+// Actualiser la barre si la recherche modifie la hauteur de la page.
+search?.addEventListener("input", () => {
+  requestAnimationFrame(updateReadingProgress);
+});
+
+// Restaurer la dernière position de lecture enregistrée.
+try {
+  const savedPosition = Number(localStorage.getItem(progressStorageKey));
+
+  if (Number.isFinite(savedPosition) && savedPosition > 0) {
+    requestAnimationFrame(() => {
+      window.scrollTo(0, savedPosition);
+      updateReadingProgress();
+    });
+  }
+} catch (error) {
+  // Le site reste utilisable si le stockage est indisponible.
+}
+
+updateReadingProgress();
