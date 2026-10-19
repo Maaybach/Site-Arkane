@@ -112,3 +112,24 @@ try {
 }
 
 updateReadingProgress();
+
+/* ===== RETOUR EN HAUT — NEXT LIFE ===== */
+
+const backToTop = document.getElementById("backToTop");
+
+if (backToTop) {
+  const toggleBackToTop = () => {
+    backToTop.classList.toggle("visible", window.scrollY > 400);
+  };
+
+  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  toggleBackToTop();
+}
