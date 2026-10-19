@@ -809,3 +809,45 @@ nav a.active {
     transition: none;
   }
 }
+/* ===== BARRE DE PROGRESSION — NEXT LIFE ===== */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px;
+  background: rgba(7, 9, 13, 0.94);
+  border-bottom: 1px solid rgba(22, 139, 255, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.reading-progress-track {
+  flex: 1;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.reading-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #168BFF, #49B5FF);
+  box-shadow: 0 0 12px rgba(22, 139, 255, 0.75);
+  transition: width 0.15s ease-out;
+}
+
+#readingProgressText {
+  min-width: 38px;
+  color: #49B5FF;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
