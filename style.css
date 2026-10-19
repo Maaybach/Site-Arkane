@@ -668,3 +668,144 @@ footer span{color:#74829A}
     animation:none!important;
   }
 }
+
+/* ===== NEXT LIFE — ELECTRIC BLUE ENHANCEMENTS ===== */
+
+:root {
+  --blue: #168BFF;
+  --blue-light: #49B5FF;
+  --blue-soft: #B8E2FF;
+  --electric-glow: rgba(22, 139, 255, 0.22);
+}
+
+/* Halo bleu discret dans le fond */
+.hero {
+  background:
+    radial-gradient(ellipse at 78% 35%, rgba(22, 139, 255, 0.20), transparent 42%),
+    radial-gradient(ellipse at 15% 85%, rgba(0, 91, 255, 0.08), transparent 38%),
+    linear-gradient(120deg, #080B12 0%, #080B12 55%, #0B1220 100%);
+}
+
+/* Logo plus lumineux */
+.brand-mark {
+  box-shadow:
+    0 0 18px rgba(22, 139, 255, 0.18),
+    inset 0 0 12px rgba(22, 139, 255, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.brand-mark:hover {
+  box-shadow:
+    0 0 12px rgba(22, 139, 255, 0.32),
+    0 0 30px rgba(22, 139, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Navigation plus fluide */
+nav a {
+  position: relative;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+nav a:hover {
+  padding-left: 16px;
+  background: rgba(22, 139, 255, 0.09);
+}
+
+nav a.active {
+  box-shadow: inset 3px 0 12px rgba(22, 139, 255, 0.08);
+  background: linear-gradient(
+    90deg,
+    rgba(22, 139, 255, 0.15),
+    rgba(22, 139, 255, 0.025)
+  );
+}
+
+/* Cartes plus premium */
+.card,
+.price-card,
+.drug-card,
+.record-box > div,
+.sanction {
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.card:hover,
+.price-card:hover,
+.drug-card:hover,
+.record-box > div:hover,
+.sanction:hover {
+  border-color: rgba(73, 181, 255, 0.55);
+  box-shadow: 0 8px 28px rgba(0, 95, 220, 0.10);
+}
+
+/* Titres avec un accent électrique */
+.section-head > span {
+  text-shadow: 0 0 14px rgba(73, 181, 255, 0.28);
+}
+
+.section-kicker {
+  text-shadow: 0 0 12px rgba(73, 181, 255, 0.20);
+}
+
+/* Champ de recherche lumineux au focus */
+.search:focus-within {
+  border-color: var(--blue-light);
+  box-shadow:
+    0 0 0 3px rgba(22, 139, 255, 0.12),
+    0 0 22px rgba(22, 139, 255, 0.08);
+}
+
+/* Bouton mobile */
+.mobile-menu {
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mobile-menu:hover {
+  border-color: var(--blue-light);
+  box-shadow: 0 0 18px rgba(22, 139, 255, 0.18);
+}
+
+/* Mouvement doux à l'arrivée sur la page */
+@keyframes nextLifeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-inner {
+  animation: nextLifeFadeIn 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-inner {
+    animation: none;
+  }
+
+  nav a,
+  .brand-mark,
+  .card,
+  .price-card,
+  .drug-card,
+  .record-box > div,
+  .sanction,
+  .mobile-menu {
+    transition: none;
+  }
+}
