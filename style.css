@@ -851,3 +851,27 @@ nav a.active {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+
+/* ===== ANIMATIONS DES CATÉGORIES — NEXT LIFE ===== */
+
+.rule-section {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rule-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respecter les préférences de réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  .rule-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
