@@ -34,15 +34,28 @@ search.addEventListener("input", () => {
   noResults.hidden = visible !== 0;
 });
 
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
+
     const id = entry.target.id;
-    navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
+
+    // Mettre en évidence la catégorie active dans le menu.
+    navLinks.forEach(link => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === `#${id}`
+      );
+    });
+
+    // Déclencher l'animation d'apparition de la catégorie.
+    entry.target.classList.add("section-visible");
   });
-}, { rootMargin: "-20% 0px -65% 0px" });
+}, { rootMargin: "-10% 0px -10% 0px" });
 
 sections.forEach(section => observer.observe(section));
+
 
 /* ===== PROGRESSION DE LECTURE — NEXT LIFE ===== */
 
