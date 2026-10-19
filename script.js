@@ -118,18 +118,26 @@ updateReadingProgress();
 const backToTop = document.getElementById("backToTop");
 
 if (backToTop) {
-  const toggleBackToTop = () => {
+  function toggleBackToTop() {
     backToTop.classList.toggle("visible", window.scrollY > 400);
-  };
+  }
 
-  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+  window.addEventListener("scroll", toggleBackToTop, {
+    passive: true
+  });
 
-  backToTop.addEventListener("click", () => {
+  backToTop.addEventListener("click", function () {
+    // Remonter la page tout en haut.
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     window.scrollTo({
       top: 0,
+      left: 0,
       behavior: "smooth"
     });
   });
 
   toggleBackToTop();
 }
+
