@@ -984,10 +984,3 @@ nav a.active {
     transition: none;
   }
 }
-/* TEST TEMPORAIRE DU BOUTON */
-.back-to-top {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: none !important;
-}
